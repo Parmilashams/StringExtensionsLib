@@ -12,28 +12,32 @@ pool:
 
 steps:
 
+# Restore
 - task: DotNetCoreCLI@2
   displayName: 'Restore project'
   inputs:
     command: 'restore'
     projects: '**/*.csproj'
 
+# Build
 - task: DotNetCoreCLI@2
   displayName: 'Build project'
   inputs:
     command: 'build'
     projects: '**/*.csproj'
 
+# Pack (IMPORTANT FIX HERE)
 - task: DotNetCoreCLI@2
   displayName: 'Pack NuGet'
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
+    outputDir: '$(Build.ArtifactStagingDirectory)'
 
-# NEW STEP — VERY IMPORTANT
+# Push (FIXED PATH)
 - task: DotNetCoreCLI@2
   displayName: 'Push NuGet to Feed'
   inputs:
     command: 'push'
-    packagesToPush: '**/*.nupkg'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     publishVstsFeed: 'pshams'
