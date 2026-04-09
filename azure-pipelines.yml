@@ -48,5 +48,5 @@ stages:
       inputs:
         command: 'push'
         packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg;!$(Build.ArtifactStagingDirectory)/*.symbols.nupkg'
-        publishVstsFeed: 'pshams'
+        publishVstsFeed: 'lab4-feed'
         allowPackageConflicts: true
