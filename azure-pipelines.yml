@@ -7,37 +7,46 @@
 trigger:
 - master
 
-pool:
-  name: Default
+variables:
+  buildConfiguration: 'Release'
+  packageName: 'StringExtensionsLib'
 
-steps:
+stages:
 
-# Restore
-- task: DotNetCoreCLI@2
-  displayName: 'Restore project'
-  inputs:
-    command: 'restore'
-    projects: '**/*.csproj'
+- stage: Build
+  displayName: "Build Stage"
+  jobs:
+  - job: BuildJob
+    displayName: "Build, Pack and Push NuGet"
+    pool:
+      name: Default
 
-# Build
-- task: DotNetCoreCLI@2
-  displayName: 'Build project'
-  inputs:
-    command: 'build'
-    projects: '**/*.csproj'
+    steps:
+    - task: DotNetCoreCLI@2
+      displayName: 'Restore project'
+      inputs:
+        command: 'restore'
+        projects: '**/*.csproj'
 
-# Pack (IMPORTANT FIX HERE)
-- task: DotNetCoreCLI@2
-  displayName: 'Pack NuGet'
-  inputs:
-    command: 'pack'
-    packagesToPack: '**/*.csproj'
-    outputDir: '$(Build.ArtifactStagingDirectory)'
+    - task: DotNetCoreCLI@2
+      displayName: 'Build project'
+      inputs:
+        command: 'build'
+        projects: '**/*.csproj'
+        arguments: '--configuration $(buildConfiguration)'
 
-# Push (FIXED PATH)
-- task: DotNetCoreCLI@2
-  displayName: 'Push NuGet to Feed'
-  inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-    publishVstsFeed: 'pshams'
+    - task: DotNetCoreCLI@2
+      displayName: 'Pack NuGet package'
+      inputs:
+        command: 'pack'
+        packagesToPack: '**/*.csproj'
+        configuration: '$(buildConfiguration)'
+        outputDir: '$(Build.ArtifactStagingDirectory)'
+
+    - task: NuGetCommand@2
+      displayName: 'Push package to Azure Artifacts'
+      inputs:
+        command: 'push'
+        packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg;!$(Build.ArtifactStagingDirectory)/*.symbols.nupkg'
+        publishVstsFeed: 'pshams'
+        allowPackageConflicts: true
