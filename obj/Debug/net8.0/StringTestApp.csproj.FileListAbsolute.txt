@@ -1,0 +1,17 @@
+C:\Semester six\Comp367\Labs\StringTestApp\bin\Debug\net8.0\StringTestApp.exe
+C:\Semester six\Comp367\Labs\StringTestApp\bin\Debug\net8.0\StringTestApp.deps.json
+C:\Semester six\Comp367\Labs\StringTestApp\bin\Debug\net8.0\StringTestApp.runtimeconfig.json
+C:\Semester six\Comp367\Labs\StringTestApp\bin\Debug\net8.0\StringTestApp.dll
+C:\Semester six\Comp367\Labs\StringTestApp\bin\Debug\net8.0\StringTestApp.pdb
+C:\Semester six\Comp367\Labs\StringTestApp\bin\Debug\net8.0\StringExtensionsLib.dll
+C:\Semester six\Comp367\Labs\StringTestApp\obj\Debug\net8.0\StringTestApp.csproj.AssemblyReference.cache
+C:\Semester six\Comp367\Labs\StringTestApp\obj\Debug\net8.0\StringTestApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Semester six\Comp367\Labs\StringTestApp\obj\Debug\net8.0\StringTestApp.AssemblyInfoInputs.cache
+C:\Semester six\Comp367\Labs\StringTestApp\obj\Debug\net8.0\StringTestApp.AssemblyInfo.cs
+C:\Semester six\Comp367\Labs\StringTestApp\obj\Debug\net8.0\StringTestApp.csproj.CoreCompileInputs.cache
+C:\Semester six\Comp367\Labs\StringTestApp\obj\Debug\net8.0\StringTe.520EDB26.Up2Date
+C:\Semester six\Comp367\Labs\StringTestApp\obj\Debug\net8.0\StringTestApp.dll
+C:\Semester six\Comp367\Labs\StringTestApp\obj\Debug\net8.0\refint\StringTestApp.dll
+C:\Semester six\Comp367\Labs\StringTestApp\obj\Debug\net8.0\StringTestApp.pdb
+C:\Semester six\Comp367\Labs\StringTestApp\obj\Debug\net8.0\StringTestApp.genruntimeconfig.cache
+C:\Semester six\Comp367\Labs\StringTestApp\obj\Debug\net8.0\ref\StringTestApp.dll

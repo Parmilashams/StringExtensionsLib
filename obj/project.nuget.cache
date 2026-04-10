@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "TJ8Pz66yRmQ=",
+  "success": true,
+  "projectFilePath": "C:\\Semester six\\Comp367\\Labs\\StringTestApp\\StringTestApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\prlsh\\.nuget\\packages\\stringextensionslib\\1.0.3\\stringextensionslib.1.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
