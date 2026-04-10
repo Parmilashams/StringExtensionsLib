@@ -2,11 +2,12 @@ namespace StringExtensionsLib
 {
     public static class StringExtensions
     {
-        public static bool StartsWithUpperCase(this string str)
+        public static bool StartsWithUpper(this string input)
         {
-            if (string.IsNullOrEmpty(str))
+            if (string.IsNullOrEmpty(input))
                 return false;
-            return char.IsUpper(str[0]);
+
+            return char.IsUpper(input[0]);
         }
     }
 }
