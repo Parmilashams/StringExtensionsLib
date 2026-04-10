@@ -1,0 +1,52 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+
+trigger:
+- master
+
+variables:
+  buildConfiguration: 'Release'
+  packageName: 'StringExtensionsLib'
+
+stages:
+
+- stage: Build
+  displayName: "Build Stage"
+  jobs:
+  - job: BuildJob
+    displayName: "Build, Pack and Push NuGet"
+    pool:
+      name: Default
+
+    steps:
+    - task: DotNetCoreCLI@2
+      displayName: 'Restore project'
+      inputs:
+        command: 'restore'
+        projects: '**/*.csproj'
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Build project'
+      inputs:
+        command: 'build'
+        projects: '**/*.csproj'
+        arguments: '--configuration $(buildConfiguration)'
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Pack NuGet package'
+      inputs:
+        command: 'pack'
+        packagesToPack: '**/*.csproj'
+        configuration: '$(buildConfiguration)'
+        outputDir: '$(Build.ArtifactStagingDirectory)'
+
+    - task: NuGetCommand@2
+      displayName: 'Push package to Azure Artifacts'
+      inputs:
+        command: 'push'
+        packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg;!$(Build.ArtifactStagingDirectory)/*.symbols.nupkg'
+        publishVstsFeed: 'Lab4-Artifacts/lab4-feed'
+        allowPackageConflicts: true
